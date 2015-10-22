@@ -1,0 +1,8 @@
+SQLREPORTER is Copyrighted to Julian Young 2012 - Not to be resold.
+PHPMailer is Distributed under the Lesser General Public License (LGPL) and is untouched.
+
+YOu have purchased this script for personal use only. If you find this report useful for commercial means then please spend the bit extra and upgrade at www.julian-young.com - it's tax deductable :)
+
+Thanks!
+
+Julian

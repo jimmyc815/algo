@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <Module>
+  <ModulePrefs title="hellofinance">
+    <Require feature="finance"/>
+  </ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+   
+  <script type="text/javascript">
+  var quote = new google.finance.Quote();
+  quote.getQuotes(["GOOG","INTC"]);
+  quote.addListener(function(data) {
+    alert("Last: " + data[google.finance.LAST]);
+    alert("Symbol: " + data[google.finance.SYMBOL]);
+    alert("Change: " + data[google.finance.CHANGE]);
+    alert("Change Pct: " + data[google.finance.CHANGE_PCT]);
+    alert("Open: " + data[google.finance.OPEN]);
+    alert("High: " + data[google.finance.HIGH]);
+    alert("Low: " + data[google.finance.LOW]);
+    alert("Exchange: " + data[google.finance.EXCHANGE]);
+    alert("Time: " + data[google.finance.LAST_TRADE_TIME]);
+    });
+    
+    </script>
+  ]]>
+  </Content>
+  </Module>

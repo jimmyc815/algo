@@ -1,0 +1,116 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Access MySQL Database</title> 
+	<link rel="stylesheet" type="text/css" href="styles/ui.jqgrid.css" /> 
+
+		<link type="text/css" href="jquery-ui-1.8.17.custom/css/cupertino/jquery-ui-1.8.17.custom.css" rel="stylesheet" />  
+	<!--		<link type="text/css" href="jquery-ui-1.8.16.custom/css/sunny/jquery-ui-1.8.16.custom.css" rel="stylesheet" /> --> 
+		<link rel="stylesheet" type="text/css" href="styles/my_style.css" />
+	<script type="text/javascript">
+
+//$(function () { tableToGrid(".table-to-grid", {}); })
+
+//$(function () { tableToGrid(”#table-to-grid”, {}); });
+
+/*jQuery(document).ready(function(){     
+	tableToGrid("#table-to-grid");
+});
+*/
+</script>
+    </head> 
+    <body> 
+        <header> 
+            <h2>Access MySQL</h2> 
+        </header> 
+        <div id="main"> 
+            <ul class="idTabs">
+            	<li><a href="#runQuery">Run Query</a></li>
+            </ul> 
+            <div id="runQuery">
+				<h4>Execute SQL Query</h4>
+				<form id="sqlForm" name="sqlForm" action="scripts/service.php" method="POST">
+					SQL Text:
+					<br>
+					<!--	<input type="textarea" COLS=40 ROWS=6 name="sqlText" /><br> -->
+					<TEXTAREA id="txtInputQuery" name="txtInputQuery" COLS=40 rows=6>show tables</textarea>
+					<br>
+					<br>	
+					<input type="radio" id="radioSubmit" name="radioSubmit"/>
+						<label for="radioSubmit">Submit Query</label>
+					<input type="radio" id="radioSubmit4" name="radioSubmit4"/> 
+						<label for="radioSubmit4">Dynamic JGrid</label> 
+					<input type="radio" id="radioStockQuote" name="radioStockQuote"/> 
+						<label for="radioStockQuote">Stock Quote</label> 
+				<br><br>
+		<!--			<button type="submit" name="btnSubmit" id="btnSubmit">Submit Query</button> -->
+					<input type="hidden" name="action" value="executeSQL3" id="action">
+				</form>
+				
+
+            </div>
+
+        </div>
+        		
+        <div id="resultOutput">
+            	<h4>SQL Result</h4>
+            	<ul id="sql_result"></ul>
+				<div id="mytable"></div>
+
+    	</div>
+
+<h4><table id="refData">Dynamic JGrid Table</table></h4>
+<div id="pager2"></div>
+<footer>
+<h4>Stock Refresh Frequence (in seconds):</h4>
+<input type="text" id="update_freq" name="update_freq" size="10" value="10"/>
+<button id="btnStart">Start Stock Updates</button>
+<button id="btnStop">Stop Stock Updates</button>
+<span id="freq"</span></div>
+<br><br>
+Last Updated Time: <div id="updatedTime"></div>
+</footer>
+<h4><table id="stockQuote">Stock Quote</table></h4>
+<div id="pager3"></div>
+<!--
+<table classname="table-to-grid" id="table-to_grid-id">
+    <tr>
+        <th>header 1</th>
+        <th>header 2</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>data 1</td>
+            <td>data 1</td>
+        </tr>
+        <tr>
+            <td>data 2</td>
+            <td>data 2</td>
+        </tr>
+    </tbody>
+</table>
+-->
+
+
+        <script src="scripts/jquery-1.6.2.min.js"></script> 
+		<script src="jquery-ui-1.8.17.custom/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="scripts/jquery.idTabs.min.js"></script> 
+        <script src="scripts/jstable_json.js"></script> 
+        <script src="scripts/json.htmTable.js"></script> 
+		<script src="scripts/grid.locale-en.js" type="text/javascript"></script>
+
+<!--		<script src="scripts/grid.common.js" type="text/javascript"></script>
+		<script src="scripts/grid.formedit.js" type="text/javascript"></script>
+		<script src="scripts/jqModal.js" type="text/javascript"></script>
+		<script src="scripts/jqDnR.js" type="text/javascript"></script>
+-->	
+
+		
+		<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+        <script src="scripts/my_scripts.js"></script> 
+	
+
+
+		
+    </body> 
+</html>

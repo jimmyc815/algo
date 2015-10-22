@@ -1,0 +1,25 @@
+[{"JSON":"success"},
+	{"colModel":[
+		{"edittype":"text","name":"sighting_id","width":1},
+		{"edittype":"text","name":"sighting_date","width":10},
+		{"edittype":"text","name":"creature_type","width":17}
+		]},
+	{"colNames":
+		["sighting_id","sighting_date","creature_type"]},
+	{"gridModel":[
+		{"dataset":[
+			{"sighting_id":"1","sighting_date":"2012-02-09","creature_type":"Jersey Devil"},
+			{"sighting_id":"2","sighting_date":"2012-02-10","creature_type":"Chupacabras"},
+			{"sighting_id":"7","sighting_date":"2012-02-13","creature_type":"Jersey Devil"},
+			{"sighting_id":"3","sighting_date":"2012-02-16","creature_type":"Loch Ness Monster"},
+			{"sighting_id":"4","sighting_date":"2012-02-17","creature_type":"Sasquatch"},
+			{"sighting_id":"5","sighting_date":"2012-02-18","creature_type":"Yeti"},
+			{"sighting_id":"6","sighting_date":"2012-02-24","creature_type":"Other"}],
+		"page":1,
+		"records":56,
+		"rows":15,
+		"sidx":null,
+		"sord":"asc",
+		"total":0
+	}]
+}]

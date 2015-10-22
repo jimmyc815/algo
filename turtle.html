@@ -1,0 +1,172 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Apply Algorithm</title> 
+		<link rel="stylesheet" type="text/css" href="style/ui.jqgrid.css" /> 
+
+		<link type="text/css" href="jquery-ui-1.8.17.custom/css/cupertino/jquery-ui-1.8.17.custom.css" rel="stylesheet" />  
+		<!--		<link type="text/css" href="jquery-ui-1.8.16.custom/css/sunny/jquery-ui-1.8.16.custom.css" rel="stylesheet" /> --> 
+		<link rel="stylesheet" type="text/css" href="style/my_style.css" />
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+	</head> 
+    <body> 
+        <header> 
+            <h2>Algo Trading - Applying Predefined Algorithm With Historical Backtesting </h2> 
+        </header> 
+            <div id="runQuery">
+				<form id="sqlForm" name="sqlForm" action="scripts/turtle.php" method="POST">
+					<h4>Step 1: Enter Stock Symbol:</h4>
+					<TEXTAREA id="inputSymbol" name="inputSymbol" COLS=10 rows=1 onfocus="$(this).val('')">aapl</textarea>
+					<br>
+					<br>
+					<h4>Step 2: Choose date range: (Default 1 Year)</h4>
+					
+<div id="date_range_picker">
+	<input type="radio" id="date_range_6_month" name="date_range_picker_check" value="date_range_6_month"><label for="date_range_6_month">6 Month</label>
+	<input type="radio" id="date_range_1_year" name="date_range_picker_check" value="date_range_1_year"><label for="date_range_1_year">1 Year</label>
+	<input type="radio" id="date_range_2_year" name="date_range_picker_check" value="date_range_2_year"><label for="date_range_2_year">2 Year</label>
+	<input type="radio" id="date_range_3_year" name="date_range_picker_check" value="date_range_3_year"><label for="date_range_3_year">3 Year</label>
+	<input type="radio" id="date_range_5_year" name="date_range_picker_check" value="date_range_5_year"><label for="date_range_5_year">5 Year</label>
+</div>					
+<br>
+					
+						Starting Date: <input  type="text" name="begin_date" id="datepicker_begin" />
+					<br>
+						Ending Date  : <input  type="text" name="end_date" id="datepicker_end" />
+					<br>
+
+					<h4>Step 3: Buy Signal:</h4>
+						<div id="buy_signal_check">
+							<input type="radio" id="buy_55_high" name="buy_type" value="buy_55_high"><label for="buy_55_high">55 Day High</label>
+							<input type="radio" id="buy_20_high" name="buy_type" value="buy_20_high"><label for="buy_20_high">20 Day High</label>
+						</div>
+					
+					<br>
+					<h4>Step 4: Stop Loss Type:</h4>
+
+<!-- Stop loss type 
+	1 N
+	2 N
+	8% max	
+	50 day MA
+	200 day MA
+
+--!>
+
+<!--
+<div id="stop_loss_check">
+	<input type="checkbox" id="check_1N" name="stop_loss_check"/><label for="check_1N">1X Avg Day Range</label>
+	<input type="checkbox" id="check_2N" name="stop_loss_check"/><label for="check_2N">2X Avg Day Range</label>
+	<input type="checkbox" id="check_8PCT" name="stop_loss_check"/><label for="check_8PCT">8% Maximum Loss From High</label>
+	<input type="checkbox" id="check_50MA" name="stop_loss_check"/><label for="check_50MA">50 Day MA</label>
+	<input type="checkbox" id="check_200MA" name="stop_loss_check"/><label for="check_200MA">200 Day MA</label>
+</div>
+--!>
+
+<div id="stop_loss_check">
+	<input type="radio" id="check_1N" name="stop_loss_type" value="check_1N"><label for="check_1N">1X Avg Day Range</label>
+	<input type="radio" id="check_2N" name="stop_loss_type" value="check_2N"><label for="check_2N">2X Avg Day Range</label>
+	<input type="radio" id="check_8PCT" name="stop_loss_type" value="check_8PCT"><label for="check_8PCT">8% Maximum Loss From High</label>
+	<input type="radio" id="check_50MA" name="stop_loss_type" value="check_50MA"><label for="check_50MA">50 Day MA</label>
+	<input type="radio" id="check_200MA" name="stop_loss_type" value="check_200MA"><label for="check_200MA">200 Day MA</label>
+</div>
+
+
+
+					<br>
+
+
+					<h4>Step 5: Choose a desired action:</h4>
+					<input type="radio" id="historicalPriceSubmit" name="historicalPriceSubmit"/>
+						<label for="historicalPriceSubmit">Historical Price</label>
+					<input type="radio" id="turtleS2Submit" name="turtleS2Submit"/>
+						<label for="turtleS2Submit">Turtle S2 System</label>
+						<br><br>
+					<input type="radio" id="optimizeSubmit" name="optimizeSubmit"/>
+						<label for="optimizeSubmit">Optimize</label>
+
+					<br>
+					<br>
+					<input type="hidden" name="action" value="turle" id="action">
+				</form>
+            </div>
+
+<div id="progressbar"></div>
+
+
+<h4> Buy and Hold Return: <br>
+Return During Period: 		  <input type="text" class="just_display" id='buy_hold_return' name="buy_hold_return_txt" readonly="readonly" style="width: 100px " size=55/>
+Annualized Return:<input type="text" align="right" class="just_display" id='buy_hold_annual_return' name="buy_hold_annual_return_txt" readonly="readonly" style="width: 100px" />
+<br>
+
+<h4><table id="algoResult"></table></h4>
+<div id="pager3"></div>
+
+
+<h4> Algo Return: <br>
+Return During Period: 		  <input type="text" class="just_display" id='turtle_return' name="portfolio_return_txt" readonly="readonly" style="width: 100px " size=55/>
+Annualized Return:<input type="text" align="right" class="just_display" id='turtle_annual_return' name="portfolio_annual_return_txt" readonly="readonly" style="width: 100px" />
+<br><br>
+Best Buy Type:<input type="text" align="right" class="just_display" id='best_buy_type' name="best_best_type_txt" readonly="readonly" style="width: 100px" />
+Best Stop Loss:<input type="text" align="right" class="just_display" id='best_stop_loss_type' name="best_stop_loss_type_txt" readonly="readonly" style="width: 100px" />
+<br><br>
+<div id="optimizeResult">
+<h4>Optimize Result<br><br><table border="3" cellspace=4 id="optimizeTable">
+            <thead>
+                <tr>
+                    <th>Buy Type</th>
+                    <th>Stop Loss Type</th>
+                    <th>Total Return</th>
+                    <th>Annualized Return</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+</table></h4>
+</div>
+
+<div id="portfolio_return"><div><br>
+<h4><table id="turtle_result">Turtle S2 System</table></h4>
+<div id="pager3"></div>
+
+
+
+<div id="container" style="height: 400px; width: 900px"></div>
+
+
+
+
+
+        <script src="scripts/jquery-1.6.2.min.js"></script> 
+		<script src="jquery-ui-1.8.17.custom/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="scripts/jquery.idTabs.min.js"></script> 
+        <script src="scripts/jstable_json.js"></script> 
+        <script src="scripts/json.htmTable.js"></script> 
+		<script src="scripts/grid.locale-en.js" type="text/javascript"></script>
+        <script src="Highstock-1.1.5/js/highstock.js"></script> 
+        <script src="Highstock-1.1.5/js/modules/exporting.js"></script> 
+
+		<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+        <script src="scripts/turtle_scripts.js"></script> 
+	
+
+		<script type="text/javascript">
+			var currentTime = new Date()
+			var month = currentTime.getMonth() + 1
+			var day = currentTime.getDate()
+			var year = currentTime.getFullYear()
+			var last_year = currentTime.getFullYear()-1
+			var today_date = month + "/" + day + "/" + year;
+			var year_ago_date = month + "/" + day + "/" + last_year;
+			document.getElementById("datepicker_end").value = today_date;
+			document.getElementById("datepicker_begin").value = year_ago_date;
+
+		</script>
+		
+    </body> 
+</html>

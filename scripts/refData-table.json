@@ -1,0 +1,23 @@
+    {
+"JSON":"success",
+"colModel":[
+    {"editable":true,"edittype":"integer","index":"userInfoId","jsonmap":"userInfoId","key":false,"name":"userInfoId","resizable":true,"search":false,"sortable":true,"width":300},
+    {"editable":true,"edittype":"text","index":"UserID","jsonmap":"userID","key":true,"name":"userID","resizable":true,"search":false,"sortable":true,"width":300}
+    ],
+"colNames":["UserInfo ID","User ID"],
+"gridModel":{
+    "dataset":[
+        {"userID":"SMI","userInfoId":5},
+        {"userID":"ABC","userInfoId":7},
+        {"userID":"PQR","userInfoId":8},
+        {"userID":"FUR","userInfoId":10},
+        {"userID":"COO","userInfoId":13}
+        ],
+    "page":1,
+    "records":56,
+    "rows":15,
+    "sidx":null,
+    "sord":"asc",
+    "total":0
+    }
+}

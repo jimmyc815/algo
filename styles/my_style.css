@@ -1,0 +1,148 @@
+body{
+	background-color: #000;
+	color: white;
+    font-size: 12px;
+
+}
+
+/* Style for tabs */
+#main {
+  background:#181818;
+  color:#111;
+  padding:15px 20px;
+  width:500px;
+  border:1px solid #222;
+  margin:8px auto;
+}
+#main > li, #main > ul > li { list-style:none; float:left; }
+#main ul a {
+  display:block;
+  padding:6px 10px;
+  text-decoration:none!important;
+  margin:1px;
+  margin-left:0;
+  color:#FFF;
+  background:#444;
+}
+#main ul a:hover {
+  color:#FFF;
+  background:#111;
+  }
+#main ul a.selected {
+  margin-bottom:0;
+  color:#000;
+  background:snow;
+  border-bottom:1px solid snow;
+  cursor:default;
+  }
+#main div {
+  padding:10px 10px 8px 10px;
+  *padding-top:3px;
+  *margin-top:-15px;
+  clear:left;
+  background:snow;
+  height: 300px ;
+}
+#main div a { color:#000; font-weight:bold; }
+
+ul#sql_result{
+	width:150px;
+	padding:0px;
+	margin:0px;
+}
+
+li.sql_result{
+	padding:4px;
+	background:#7B7382;
+	border:1px #000 solid;
+	color:#fff;
+	list-style:none;
+}
+
+#mytable {
+	border: 0px solid white;
+	color: white;
+	border-color: white;
+
+}
+
+#PersonTableContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+
+#dailyBuyListContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+
+#portfolioContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+#pnlContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+#transactionsContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+#historyContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+
+#RegisteredSimulationContainer
+{
+	border: 0px solid blue;
+	color: black;
+	border-color: blue;
+	width: 900px;
+}
+
+#refData {
+	width: 1700 px;
+
+}
+
+.green {
+    background-color: green;
+};
+
+#slide_freq{
+	margin-bottom:14px;
+	width: 500 px;
+}
+
+.just_display{
+	border:0px;
+	background: white;
+	padding-bottom: 5px;
+}
+
+.ui-progressbar-value { 
+	background-image: url(images/pbar-ani.gif); 
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+    padding-left: 10px;
+}

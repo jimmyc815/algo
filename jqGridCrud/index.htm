@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd";>
+<html>
+<head>
+	<script type="text/javascript" src="jquery-1.3.2.min.js"></script><!-- jQuery http://jquery.com -->
+	<script type="text/javascript" src="js/jqDnR.js"></script><!-- Required for auto generated forms in nav bar  -->
+	<script type="text/javascript" src="js/jqModal.js"></script><!-- Required for auto generated forms in nav bar  -->
+	<script type="text/javascript" src="jquery.jqGrid.js"></script><!-- jqGrid http://www.trirand.com/blog/ -->
+	<script type="text/javascript" src="index.js"></script><!-- specific js for this page. -->
+	<link rel="stylesheet" type="text/css" media="screen" href="themes/jqModal.css" /><!-- jqModal css -->
+	<link rel="stylesheet" type="text/css" media="screen" href="themes/basic/grid.css" /> <!-- jqgrid theme -->
+</head>
+<body>
+	<table id="htmlTable" class="scroll"></table>
+	<div id="htmlPager" class="scroll"></div>
+	
+	<table id="htmlTable_2" class="scroll"></table>
+	<div id="htmlPager_2" class="scroll"></div>
+	
+	<div class="customForm" style="width:500px;border:1px solid #000000">
+		<form id="customForm">
+			<input type="hidden" id="id" name="id" />
+			Protocol:<input type="text" id="protocol" name="protocol" /><br/>
+			Method:<input type="text" id="method" name="method" /><br/>
+			URL:<input type="text" id="url" name="url" /><br/>
+			Site:<input type="text" id="site" name="site" /><br/>
+			Media:<input type="text" id="media_type" name="media_type" /><br/>
+			<div id="btnSubmit" style="text-align:center;width:80px;color:#ffffff;background-color:#333333;font-weight:bold;cursor:pointer;border:1px solid #000000">Submit</div>
+		</form>
+	</div>
+</body>
+</html>

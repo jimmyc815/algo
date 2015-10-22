@@ -1,0 +1,320 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>ConnorsRSI Portfolio Simulation</title> 
+		<link rel="stylesheet" type="text/css" href="styles/ui.jqgrid.css" /> 
+
+		<link type="text/css" href="jquery-ui-1.8.17.custom/css/cupertino/jquery-ui-1.8.17.custom.css" rel="stylesheet" /> 
+			<!--	<link type="text/css" href="jquery-ui-1.8.16.custom/css/sunny/jquery-ui-1.8.16.custom.css" rel="stylesheet" /> -->
+		<link rel="stylesheet" type="text/css" href="styles/my_style.css" />
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+
+
+
+	</head> 
+<body> 
+        <header> 
+            <h2>Portfolio Simulation with ConnorsRSI</h2> 
+        </header> 
+ 		End Date  : <input  type="text" name="end_date" id="datepicker_end" />
+					<br>
+            <div id="runQuery">
+				<form id="sqlForm" name="sqlForm" action="scripts/turtle.php" method="POST">
+					<h4>Step 1: Choose starting date: (Default 1 Year Ago)</h4>
+					
+<div id="date_range_picker">
+	<input type="radio" id="date_range_6_month" name="date_range_picker_check" value="date_range_6_month"><label for="date_range_6_month">6 Month</label>
+	<input type="radio" id="date_range_1_year" name="date_range_picker_check" value="date_range_1_year"><label for="date_range_1_year">1 Year</label>
+	<input type="radio" id="date_range_2_year" name="date_range_picker_check" value="date_range_2_year"><label for="date_range_2_year">2 Year</label>
+	<input type="radio" id="date_range_3_year" name="date_range_picker_check" value="date_range_3_year"><label for="date_range_3_year">3 Year</label>
+	<input type="radio" id="date_range_5_year" name="date_range_picker_check" value="date_range_5_year"><label for="date_range_5_year">5 Year</label>
+</div>					
+<p><br>
+					
+			Starting Date: <input  type="text" name="begin_date" id="datepicker_begin" />
+		</p>
+<p>Or choose a pre-defined period:</p>
+<div id="date_range_picker2">
+  <input type="radio" id="predefined_2014" name="date_range_picker_check" value="predefined_2014">
+  <label for="predefined_2014">2014</label>
+  <input type="radio" id="predefined_2013" name="date_range_picker_check" value="predefined_2013">
+  <label for="predefined_2013">2013</label>
+  <input type="radio" id="predefined_2012" name="date_range_picker_check" value="predefined_2012">
+  <label for="predefined_2012">2012</label>
+  <input type="radio" id="predefined_2011" name="date_range_picker_check" value="predefined_2011">
+  <label for="predefined_2011">2011</label>
+  <input type="radio" id="predefined_2010" name="date_range_picker_check" value="predefined_2010">
+  <label for="predefined_2010">2010</label>
+    <input type="radio" id="predefined_2009" name="date_range_picker_check" value="predefined_2009">
+  <label for="predefined_2009">2009</label>
+    <input type="radio" id="predefined_2008" name="date_range_picker_check" value="predefined_2008">
+  <label for="predefined_2008">2008</label>
+    <input type="radio" id="predefined_2007" name="date_range_picker_check" value="predefined_2007">
+  <label for="predefined_2007">2007</label>
+
+  <br>
+</div>
+<h4>Step 2: Choose Connors RSI Filter</h4>
+<div id="choose_crsi_criteria">
+
+<p>Enter CRSI: 
+  <input name="enterCRSI" type="text" id="enterCRSI" size="3" maxlength="3">
+</p>
+<p>Enter Range: 
+  <input name="enterRange" type="text" id="enterRange" size="3" maxlength="3">
+%</p>
+<p>Enter Limit Order Below Current Price: 
+  <input name="enterLimit" type="text" id="enterLimit" size="3" maxlength="3">
+%</p>
+<p>Exit CRSI: 
+  <input name="exitCRSI" type="text" id="exitCRSI" size="3" maxlength="3">
+  <br>
+</p>
+Sort Daily Buy List By
+<br>
+  <input type="radio" id="sort_by_crsi_desc" name="choose_crsi_criteria" value="sort_by_crsi_desc">
+  <label for="sort_by_crsi_desc">Highest CRSI First</label>
+  <input type="radio" id="sort_by_crsi_asc" name="choose_crsi_criteria" value="sort_by_crsi_asc">
+  <label for="sort_by_crsi_asc">Lowest CRSI First</label>  
+<br>
+
+</div>
+
+<h4>Step 3: Choose Risk Tolerance</h4>
+<div id="choose_risk_tolerance">
+<p>Max Portfolio Risk (Default 20%): 
+  <input name="maxRisk" type="text" id="maxRisk" size="3" maxlength="3">
+%</p>
+<p>Max Risk Percentage Per Trade   (Default 0.3%): 
+  <input name="riskFactor" type="text" id="riskFactor" size="3" maxlength="3">
+  %</p>
+<p>Risk Tolerance Per Trade Based On Standard Deviation (Default 2): 
+  <input name="riskSD" type="text" id="riskSD" size="3" maxlength="3">
+</p>
+</div>
+<h4>Step 4: Other Settings</h4>
+<div id="choose_others">
+
+<p>Starting Investment Capital: 
+  $
+  <input name="cash" type="text" id="cash" size="10" maxlength="15">
+</p>
+<p>Commission Per Trade: 
+  $
+  <input name="commission" type="text" id="commission" size="3" maxlength="3">
+</p>
+</div>
+<h4>Step 5: Run simulation now:</h4>
+					<input type="radio" id="simulateSubmit" name="simulateSubmit"/>
+						<label for="simulateSubmit">Simulate</label>
+					<input type="radio" id="stopSimulate" name="stopSimulate"/>
+						<label for="stopSimulate">Stop Simulation</label>
+
+					<br>
+					<br>
+					<input type="hidden" name="action" value="turtle" id="action">
+				</form>
+            </div>
+
+<div id="progressbar"></div>
+
+
+<h4><table id="algoResult"></table></h4>
+<div id="pager3"></div>
+
+
+
+
+
+<h4><table id="refData"></table></h4>
+<div id="pager2"></div>
+
+
+<table>
+<td>
+<div id="container" style="height: 400px; width: 900px"></div>
+</td>
+</table>
+<h4><table id="dailyStockPickResult"></table></h4>
+<div id="pager5"></div>
+
+
+<table id="portfolioPerformanceResult" width="500" border="1">
+  <tr>
+    <th colspan="7" scope="col">Portfolio Performance</th>
+  </tr>
+  <tr>
+    <td width="120">Max Return</td>
+    <td width="120">Min Return</td>
+    <td width="120">Begin Balance</td>
+    <td width="120">End Balance</td>
+  </tr>
+  <tr>
+    <td><input type="text" id="portMaxReturn" name="portMaxReturn" size="8" />
+%</td>
+    <td><input type="text" id="portMinReturn" name="portMinReturn" size="8" />
+%</td>
+    <td><input type="text" id="portBeginBalance" name="portBeginBalance" size="8" /></td>
+    <td><input type="text" id="portEndBalance" name="portEndBalance" size="8" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table id="portfolioPerformanceResult2" width="500" border="1">
+  <tr>
+    <th colspan="4" scope="col">Transaction Performance</th>
+  </tr>
+  <tr>
+    <td width="139">Transaction Count</td>
+    <td width="167"> Probability (+) Tran</td>
+    <td width="172"> Probability (-) Tran</td>
+  </tr>
+  <tr>
+    <td><input type="text" id="totalTranCount" name="totalTranCount" size="8" /></td>
+    <td><input name="posTranProb" type="text" id="posTranProb" size="8" maxlength="5" />
+      %</td>
+    <td><input name="negTranProb" type="text" id="negTranProb" size="8" maxlength="5" />
+      %</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table id="tranPerformanceResult" width="906" height="131" border="1">
+    <th colspan="8" scope="col">Individual Transaction Performance</th>
+  <tr>
+    <td width="103">Max Tran Return ($)</td>
+    <td width="97">Min Tran Return ($)</td>
+    <td width="97">Max Holding Days</td>
+    <td width="107">Min Holding Days</td>
+    <td width="109">Avg Holding Days</td>
+    <td width="111">Max Tran R Multiples</td>
+    <td width="119">Min Tran R Multiples</td>
+    <td width="111">Avg Tran R Multiples</td>
+  </tr>
+  <tr>
+    <td><input type="text" id="tranMaxReturn" name="tranMaxReturn" size="7" /></td>
+    <td><input name="tranMinReturn" type="text" id="tranMinReturn" size="7" /></td>
+    <td><input name="tranMaxHoldingDays" type="text" id="tranMaxHoldingDays" size="7" />
+    Days</td>
+    <td><input name="tranMinHoldingDays" type="text" id="tranMinHoldingDays" size="7" /> Days</td>
+    <td><input name="tranAvgHoldingDays" type="text" id="tranAvgHoldingDays" size="7" /> Days</td>
+    <td><input name="tranMaxRMul" type="text" id="tranMaxRMul" size="7" /></td>
+    <td><input name="tranMinRMul" type="text" id="tranMinRMul" size="7" /></td>
+    <td><input name="tranAvgRMul" type="text" id="tranAvgRMul" size="7" /></td>
+  </tr>
+</table>
+<p> </p>
+<table id="posTranPerformanceResult" width="906" height="131" border="1">
+    <th colspan="8" bgcolor="#33CC99" scope="col">Positive Transaction Performance</th>
+  </tr>
+  <tr>
+    <td width="103">Max Tran Return ($)</td>
+    <td width="97">Min Tran Return ($)</td>
+    <td width="97">Max Holding Days</td>
+    <td width="107">Min Holding Days</td>
+    <td width="109">Avg Holding Days</td>
+    <td width="111">Max Tran R Multiples</td>
+    <td width="119">Min Tran R Multiples</td>
+    <td width="111">Avg Tran R Multiples</td>
+  </tr>
+  <tr>
+    <td><input name="posTranMaxReturn" type="text" id="posTranMaxReturn" size="7" /></td>
+    <td><input name="posTranMinReturn" type="text" id="posTranMinReturn" size="7" /></td>
+    <td><input name="posTranMaxHoldingDays" type="text" id="posTranMaxHoldingDays" size="7" />
+    Days</td>
+    <td><input name="posTranMinHoldingDays" type="text" id="posTranMinHoldingDays" size="7" /> Days</td>
+    <td><input name="posTranAvgHoldingDays" type="text" id="posTranAvgHoldingDays" size="7" /> Days</td>
+    <td><input name="posTranMaxRMul" type="text" id="posTranMaxRMul" size="7" /></td>
+    <td><input name="posTranMinRMul" type="text" id="posTranMinRMul" size="7" /></td>
+    <td><input name="posTranAvgRMul" type="text" id="posTranAvgRMul" size="7" /></td>
+  </tr>
+</table>
+<p></p>
+<table id="negTranPerformanceResult" width="906" height="131" border="1">
+    <th colspan="8" bgcolor="#FF0000" scope="col">Negative Transaction Performance</th>
+  </tr>
+  <tr>
+    <td width="103">Max Tran Return ($)</td>
+    <td width="97">Min Tran Return ($)</td>
+    <td width="97">Max Holding Days</td>
+    <td width="107">Min Holding Days</td>
+    <td width="109">Avg Holding Days</td>
+    <td width="111">Max Tran R Multiples</td>
+    <td width="119">Min Tran R Multiples</td>
+    <td width="111">Avg Tran R Multiples</td>
+  </tr>
+  <tr>
+    <td><input name="negTranMaxReturn" type="text" id="negTranMaxReturn" size="7" /></td>
+    <td><input name="negTranMinReturn" type="text" id="negTranMinReturn" size="7" /></td>
+    <td><input name="negTranMaxHoldingDays" type="text" id="negTranMaxHoldingDays" size="7" />
+    Days</td>
+    <td><input name="negTranMinHoldingDays" type="text" id="negTranMinHoldingDays" size="7" /> Days</td>
+    <td><input name="negTranAvgHoldingDays" type="text" id="negTranAvgHoldingDays" size="7" /> Days</td>
+    <td><input name="negTranMaxRMul" type="text" id="negTranMaxRMul" size="7" /></td>
+    <td><input name="negTranMinRMul" type="text" id="negTranMinRMul" size="7" /></td>
+    <td><input name="negTranAvgRMul" type="text" id="negTranAvgRMul" size="7" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h4><table id="portfolioResult"></table></h4>
+<div id="pager4"></div>
+
+<h4><table id="transactionResult"></table></h4>
+<div id="pager6"></div>
+
+<h4><table id="transactionPandL"></table></h4>
+<div id="pager7"></div>
+<p>
+  <input type="button" id="btnExport" value=" Export Table data into Excel " />
+</p>
+<p>&nbsp; </p>
+<div id="dialog" title="Title Box">
+</div>
+
+<!--<a href="#" onclick="jQuery('#dialog').load('stock_chart.html?symbol=AAPL').dialog('open'); return false">Click to view</a>
+-->
+
+<a href="#" onclick="window.open('stock_chart.html?symbol=AAPL', 'Stock ,Charts', 'height=430,width=920,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');">Click to view</a>
+
+
+
+
+        <script src="scripts/jquery-1.6.2.min.js"></script> 
+		<script src="jquery-ui-1.8.17.custom/js/jquery-ui-1.8.17.custom.min.js"></script>
+        <script src="scripts/jquery.idTabs.min.js"></script> 
+        <script src="scripts/jstable_json.js"></script> 
+        <script src="scripts/json.htmTable.js"></script> 
+		<script src="scripts/grid.locale-en.js" type="text/javascript"></script>
+        <script src="Highstock-1.1.5/js/highstock.js"></script> 
+        <script src="Highstock-1.1.5/js/modules/exporting.js"></script> 
+
+		<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+        <script src="scripts/connorsRSI_simulation.js"></script> 
+        
+ <script type="text/javascript" src="scripts/tableExport.js"></script>
+<script type="text/javascript" src="scripts/jquery.base64.js"></script>       
+	
+
+		<script type="text/javascript">
+			var currentTime = new Date()
+			var month = currentTime.getMonth() + 1
+			var day = currentTime.getDate()
+			var year = currentTime.getFullYear()
+			var last_year = currentTime.getFullYear()-1
+			var today_date = month + "/" + day + "/" + year;
+			var year_ago_date = month + "/" + day + "/" + last_year;
+			document.getElementById("datepicker_end").value = today_date;
+
+			document.getElementById("datepicker_begin").value = year_ago_date;
+
+			document.getElementById("valueOrderByPctChange").value = 100;
+			document.getElementById("valueOrderByRelVol").value = 0;
+			document.getElementById("valueOrderByVsSpy").value = 0;
+
+
+		</script>
+		
+</body> 
+</html>

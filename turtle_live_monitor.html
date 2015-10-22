@@ -1,0 +1,127 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Turtle Live Monitor</title> 
+		<link rel="stylesheet" type="text/css" href="styles/ui.jqgrid.css" /> 
+
+		<link type="text/css" href="jquery-ui-1.8.17.custom/css/cupertino/jquery-ui-1.8.17.custom.css" rel="stylesheet" /> 
+		<!--		<link type="text/css" href="jquery-ui-1.8.16.custom/css/sunny/jquery-ui-1.8.16.custom.css" rel="stylesheet" /> -->
+                
+		<link rel="stylesheet" type="text/css" href="styles/my_style.css" />
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+	</head> 
+<body> 
+<header> 
+            <h2>Engine Live Monitor</h2> 
+    </header> 
+	Today Date  : <input name="end_date"  type="text" id="datepicker_end" size="10" maxlength="10" />
+				<br>
+
+<div id="progressbar"></div>
+
+<!--
+<h4><table id="algoResult"></table></h4>
+<div id="pager3"></div>
+
+<h4><table id="refData"></table></h4>
+<div id="pager2"></div>
+-->
+<!--<h4><table id="dailyStockPickResult"></table></h4>
+<div id="pager5"></div>
+-->
+<br>
+<table id='portfolio_return_table'>
+<tr>
+<td>
+    <table id='container1_table'>
+    <td>
+    <div id="container" style="height: 300px; width: 600px"></div>
+    </td>
+    </table>
+</td>
+<td>
+    <table id='container2_table'>
+    <td>
+    <div id="container2" style="height: 300px; width: 600px"></div>
+    </td>
+    </table>
+    </td>
+</tr>
+</table>
+
+<h4><table id="portfolioSummary"></table></h4>
+<div id="pager9"></div>
+
+<h4><table id="portfolioOverview"></table></h4>
+<div id="pager8"></div>
+
+<h4><table id="portfolioResult"></table></h4>
+<div id="pager4"></div>
+
+<h4><table id="transactionResult"></table></h4>
+<div id="pager6"></div>
+
+<table id = "second_row">
+<tr>
+<td>
+	<table id="transactionPandL"></table>
+	<div id="pager7"></div>
+</td>
+<td>
+	<table id="dailyStockPickResult"></table>
+	<div id="pager5"></div>
+</td>
+</tr>
+</table>
+<div id="dialog" title="Title Box">
+</div>
+
+<footer>
+<h4>Auto Refresh Portfolio Frequency (in seconds):</h4>
+<input type="text" id="update_freq" name="update_freq" size="10" value="10"/>
+<button id="btnStart">Start Auto Refresh</button>
+<button id="btnStop">Stop Auto Refresh</button>
+<span id="freq"</span></div>
+<br><br>
+Last Updated Time: <div id="updatedTime"></div>
+</footer>
+
+<!--<a href="#" onclick="jQuery('#dialog').load('stock_chart.html?symbol=AAPL').dialog('open'); return false">Click to view</a>
+-->
+
+
+
+
+
+<script src="scripts/jquery-1.6.2.min.js"></script> 
+<script src="jquery-ui-1.8.17.custom/js/jquery-ui-1.8.17.custom.min.js"></script>
+<script src="scripts/jquery.idTabs.min.js"></script> 
+<script src="scripts/jstable_json.js"></script> 
+<script src="scripts/json.htmTable.js"></script> 
+<script src="scripts/grid.locale-en.js" type="text/javascript"></script>
+<script src="Highstock-1.1.5/js/highstock.js"></script> 
+<script src="Highstock-1.1.5/js/modules/exporting.js"></script> 
+
+<script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+<script src="scripts/portfolio_monitor.js"></script> 
+	
+
+<script type="text/javascript">
+			var currentTime = new Date()
+			var month = currentTime.getMonth() + 1
+			var day = currentTime.getDate()
+			var year = currentTime.getFullYear()
+			var last_year = currentTime.getFullYear()-1
+			var today_date = month + "/" + day + "/" + year;
+			var year_ago_date = month + "/" + day + "/" + last_year;
+			document.getElementById("datepicker_end").value = today_date;
+
+		</script>
+		
+</body> 
+</html>
